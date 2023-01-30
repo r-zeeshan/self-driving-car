@@ -9,7 +9,6 @@ from PIL import Image
 import cv2
 
 sio = socketio.Server()
-
 app = Flask(__name__)
 maxSpeed = 10
 
@@ -48,6 +47,6 @@ def sendControl(steering, throttle):
     })
 
 if __name__ == "__main__":
-    model = load_model("")
+    model = load_model("model.h5")
     app  = socketio.Middleware(sio, app)
     eventlet.wsgi.server(eventlet.listen(('', 4567)), app)
